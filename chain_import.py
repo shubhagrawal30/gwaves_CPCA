@@ -6,7 +6,6 @@ import h5py
 import numpy as np
 
 import pesummary
-from pesummary.io import read
 
 file_name = "./data/IGWN-GWTC3p0-v1-GW200112_155838_PEDataRelease_mixed_cosmo.h5"
 
@@ -19,6 +18,22 @@ with h5py.File(file_name, "r") as f:
 
 
 file = h5py.File(file_name, "r")
+
+
+for f in file['C01:IMRPhenomXPHM'].keys(): print(f)
+
+file['C01:IMRPhenomXPHM']['approximant'][()]
+
+for i in file['C01:IMRPhenomXPHM']['calibration_envelope']: print(i, file['C01:IMRPhenomXPHM']['calibration_envelope'][i][()])
+
+
+file['C01:IMRPhenomXPHM']['posterior_samples'][()]
+
+file['C01:IMRPhenomXPHM']['priors']['analytic'].keys()
+file['C01:IMRPhenomXPHM']['priors']['analytic'].items()
+
+
+for f in file['C01:IMRPhenomXPHM']['description'].keys(): print(f)
 
 
 file['C01:IMRPhenomXPHM']['meta_data']['meta_data'].keys()
