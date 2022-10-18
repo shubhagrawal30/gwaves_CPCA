@@ -28,9 +28,13 @@ def samples_from_GW_data(file_name, settings=None):
     labels = []
     for _name in param_names:
         if _name in GWlatex_labels.keys():
-            labels.append(GWlatex_labels[_name])
+            _temp_label = GWlatex_labels[_name]
         else:
-            labels.append(_name)
+            _temp_label = _name.replace('_', ' ')
+        # parse
+        _temp_label = _temp_label.replace('$', '')
+        # save:
+        labels.append(_temp_label)
     # initialize the samples:
     mc_samples = MCSamples(samples=samples,
                            loglikes=loglikes,
